@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "name": "ProjectZ",
+  "version": "0.0.1",
+  "description": "For own usage",
+  "repository": "https://github.com/Zestu/ProjectZ.git",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -10,6 +10,10 @@
     "angular-route": "~1.4.0",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
+    "angular-resource": "1.4.x",
+    "angular-animate": "1.4.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
     "html5-boilerplate": "~5.2.0"
   }
 }
