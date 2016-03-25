@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title">Questionary</h3>
+</div>
+<div class="modal-body">
+    <form name="form">
+        <div class="form-group has-error has-feedback" ng-repeat="item in questions" >
+            <label for="{{item.id}}">{{item.question}}</label>
+            <input id="{{item.id}}" name="{{item.id}}" aria-describedby="inputAnswer_{{item.id}} frameAnswer_{{item.id}}" ng-model="item.answer" type="text" class="form-control" placeholder="Answer shortly here..." required="" />
+            <span ng-show="form.{{item.id}}.$touched && form.{{item.id}}.$invalid" id="inputAnswer_{{item.id}}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            <span ng-show="form.{{item.id}}.$touched && form.{{item.id}}.$invalid" class="help-block">Be neat and patient answer all questions!</span>
+            <span id="frameAnswer_{{item.id}}" class="sr-only">(error)</span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="submit" ng-click="submitQuestionary()" ng-disabled="form.$invalid">Save changes</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+</div>
