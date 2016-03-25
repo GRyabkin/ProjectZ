@@ -6,7 +6,7 @@ angular.module('ProjectZ', [
   'ngAnimate',
   'ngTouch',
   'ui.bootstrap',
-  'projectzServices'
+  'projectZServices'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -15,11 +15,11 @@ angular.module('ProjectZ', [
   });
 }])
 
-.controller('mainCtrl', function ($scope, $uibModal, $log, QuestionsBase) {
+.controller('mainCtrl', function ($scope, $uibModal, $log, Questionary) {
 
-  $scope.questions = QuestionsBase.query();
+  $scope.questionary = Questionary.query();
   $scope.open = function (size) {
-  
+
     var modalInstance = $uibModal.open({
       animation: true,
       templateUrl: 'templates/questionary_form.html',
@@ -27,9 +27,12 @@ angular.module('ProjectZ', [
       size: size,
       scope: $scope
     });
+
+    modalInstance.saveData = function () {
     
-    modalInstance.close = function () {
-      $log.info('Modal closed with ' + $scope.questions[0].answer);
+      var postPayload = $scope.questionary;
+      postPayload.fillDate = new Date();
+      Questionary.save(postPayload);
     };
   };
 })
@@ -38,7 +41,7 @@ angular.module('ProjectZ', [
 
     $scope.submitQuestionary = function () {
       // Pass params in close
-      $uibModalInstance.close();
+      $uibModalInstance.saveData();
       $uibModalInstance.dismiss('cancel');
     };
 

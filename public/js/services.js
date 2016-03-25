@@ -5,11 +5,13 @@
 
 /* Services */
 
-angular.module('projectzServices', ['ngResource'])
+angular.module('projectZServices', ['ngResource'])
 
-.factory('QuestionsBase', ['$resource',
+.factory('Questionary', ['$resource',
     function($resource) {
-        return $resource('data/:id', {id: '@id'}, {
-            query: {method: 'get', params:{id:'questions.json'}, isArray: true}
+        return $resource('/api/pgq/:pgq_id', {id: '@id'}, {
+              save: { method:'POST', isArray: true },
+             query: { method: "GET", isArray: false },
+            getAll: { method: "GET", url:'/api/pgqAll', isArray: true }
         });
-    }]);
+}]);
