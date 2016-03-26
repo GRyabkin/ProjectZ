@@ -5,25 +5,21 @@
 <!--[if IE 8]>         <html lang="en" ng-app="ProjectZ" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="ProjectZ" class="no-js"> <!--<![endif]-->
 <head>
+  <title>Project-Z</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Project-Z</title>
-  <link rel="shortcut icon" href="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
-<body ng-controller="mainCtrl">
+<body>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
   <div ng-view></div>
-
-  <div class="container-fluid">
-    <button id="open_questionary" type="button" class="btn btn-info vertical-center center-block" ng-click="open()">Fill questionary</button>
-  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

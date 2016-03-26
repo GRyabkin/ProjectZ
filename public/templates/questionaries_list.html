@@ -1,0 +1,32 @@
+<div class="container">
+
+    <button id="open_questionary" type="button"
+            class="btn btn-lg btn-info fill-forms-button center-block"
+            ng-click="open()">Fill questionary</button>
+
+    <div class="page-header">
+        <h1>{{questionary.name}} <small>Sorted by date</small></h1>
+    </div>
+
+    <div class="row questionaries-list-row">
+
+        <uib-accordion close-others="true">
+
+            <div class="questionary-list-item col-md-6" ng-repeat="questionary in questionariesList | orderBy:'-fillDate'">
+                <uib-accordion-group is-open="status.open">
+                    <uib-accordion-heading >
+                        <span class="control-label">{{questionary.fillDate | date:"EEEE @ HH:mm, MMMM - y"}}</span>
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <div class="list-group" ng-repeat="item in questionary.questions">
+                        <h4 class="list-group-item-heading">{{item.question}}</h4>
+                        <p class="list-group-item-text">{{item.answer}}</p>
+                    </div>
+                </uib-accordion-group>
+            </div>
+
+        </uib-accordion>
+
+    </div>
+</div>

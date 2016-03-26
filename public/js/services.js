@@ -12,6 +12,6 @@ angular.module('projectZServices', ['ngResource'])
         return $resource('/api/pgq/:pgq_id', {id: '@id'}, {
               save: { method:'POST', isArray: true },
              query: { method: "GET", isArray: false },
-            getAll: { method: "GET", url:'/api/pgqAll', isArray: true }
+            getSubmitted: { method: "GET", url:'/api/pgqAll', isArray: true }
         });
 }]);

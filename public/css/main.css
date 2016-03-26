@@ -1,5 +1,14 @@
 /* app css stylesheet */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-.vertical-center {
+.fill-forms-button {
     margin-top: 50px;
+}
+
+.questionaries-list-row {
+    padding: 10px;
+}
+
+.questionary-list-item {
+    margin-bottom: 10px;
 }

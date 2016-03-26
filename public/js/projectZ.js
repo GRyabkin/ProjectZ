@@ -11,14 +11,20 @@ angular.module('ProjectZ', [
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({
-    redirectTo: '/'
+    redirectTo: '/',
+    templateUrl: 'templates/questionaries_list.html',
+    controller: 'mainCtrl'
   });
 }])
 
 .controller('mainCtrl', function ($scope, $uibModal, $log, Questionary) {
 
-  $scope.questionary = Questionary.query();
+  $scope.questionariesList = Questionary.getSubmitted();
+  $scope.questionary       = Questionary.query();
+
   $scope.open = function (size) {
+
+    $scope.questionary = Questionary.query();
 
     var modalInstance = $uibModal.open({
       animation: true,
@@ -32,7 +38,9 @@ angular.module('ProjectZ', [
     
       var postPayload = $scope.questionary;
       postPayload.fillDate = new Date();
-      Questionary.save(postPayload);
+
+      $scope.questionariesList = Questionary.save(postPayload);
+      $scope.questionary = {};
     };
   };
 })
