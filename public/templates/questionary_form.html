@@ -4,16 +4,16 @@
 <div class="modal-body">
     <form name="form">
         <div class="form-group has-error has-feedback" ng-repeat="question in questionary.questions" >
-            <label for="{{question.id}}">{{question.question}}</label>
+            <label for="{{question.id}}">Question {{$index + 1}}</label>
+            <!-- Answer shortly here... {{question.question}} -->
             <input id="{{question.id}}" name="{{question.id}}"
                    aria-describedby="inputAnswer_{{question.id}} frameAnswer_{{question.id}}"
-                   ng-model="question.answer" type="text" class="form-control"
-                   placeholder="Answer shortly here..." required="" />
+                   ng-model="question.answer" type="text" class="form-control" placeholder="{{question.question}}" required="" />
             <span ng-show="form.{{question.id}}.$touched && form.{{question.id}}.$invalid"
                   id="inputAnswer_{{question.id}}" class="glyphicon glyphicon-remove form-control-feedback"
                   aria-hidden="true"></span>
             <span ng-show="form.{{question.id}}.$touched && form.{{question.id}}.$invalid"
-                  class="help-block">Be neat and patient answer all questions!</span>
+                  class="help-block">You need to be neat and patient to answer all questions!</span>
             <span id="frameAnswer_{{question.id}}" class="sr-only">(error)</span>
         </div>
     </form>
