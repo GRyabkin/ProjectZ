@@ -33,7 +33,8 @@ describe('ProjectZ controllers', function() {
 
             $httpBackend.whenGET('/api/pgqAll').respond(dataSubmittedPGQ);
             $httpBackend.whenGET('/api/pgq').respond(dataDefaultPGQ);
-            
+            $httpBackend.whenGET('templates/questionaries_list.html').respond(200, '');
+
             scope = $rootScope.$new();
             ctrl = $controller('mainCtrl', {$scope: scope});
         }));
