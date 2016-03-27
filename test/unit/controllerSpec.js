@@ -25,21 +25,33 @@ describe('ProjectZ controllers', function() {
             questions:[ {id: "q1"}, {id: "q2"} ]
         };
 
+        var dataSubmittedPGQ = [{ name: "PGQ", fillDate: 162244141, questions:[ {id: "q1"}, {id: "q2"} ]},
+                                { name: "PGQ", fillDate: 134573457, questions:[ {id: "q1"}, {id: "q2"} ]}];
+
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/api/pgq').
-                respond(dataDefaultPGQ);
 
+            $httpBackend.whenGET('/api/pgqAll').respond(dataSubmittedPGQ);
+            $httpBackend.whenGET('/api/pgq').respond(dataDefaultPGQ);
+            
             scope = $rootScope.$new();
             ctrl = $controller('mainCtrl', {$scope: scope});
         }));
 
         it('should load default questionary', function () {
 
+            $httpBackend.expectGET('/api/pgq').respond(dataDefaultPGQ);
             expect(scope.questionary).toEqualData({});
             $httpBackend.flush();
-
             expect(scope.questionary).toEqualData(dataDefaultPGQ);
+        });
+
+        it('should load list of submitted questionaries', function () {
+
+            $httpBackend.expectGET('/api/pgqAll').respond(dataSubmittedPGQ);
+            expect(scope.questionariesList).toEqualData([]);
+            $httpBackend.flush();
+            expect(scope.questionariesList).toEqualData(dataSubmittedPGQ);
         });
     });
 });
