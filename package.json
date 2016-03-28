@@ -21,7 +21,6 @@
     "method-override": "~2.1.x"
   },
   "scripts": {
-    "postinstall": "bower install",
 
     "prestart": "npm install",
     "start": "node server/server.js",
