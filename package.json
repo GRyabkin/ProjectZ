@@ -21,7 +21,7 @@
     "method-override": "~2.1.x"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "HOME=$OPENSHIFT_DATA_DIR bower install",
     "prestart": "npm install",
     "start": "node server/server.js",
     "pretest": "npm install",
