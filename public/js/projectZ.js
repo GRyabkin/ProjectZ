@@ -18,9 +18,9 @@ angular.module('ProjectZ', [
 }])
 
 .controller('mainCtrl', function ($scope, $uibModal, $log, Questionary) {
-
-  $scope.questionariesList = Questionary.getSubmitted();
-  $scope.questionary       = Questionary.query();
+  
+  $scope.questionariesList  = Questionary.getSubmitted();
+  $scope.questionary        = Questionary.query();
 
   $scope.open = function (size) {
 
