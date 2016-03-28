@@ -19,7 +19,14 @@ mongoose.connection.on('error', function (err) {
 mongoose.connection.once('open', function callback () {
     if (!personalGrowthQuestionary)
     {
-        var file = path.join(__dirname, '../predefined/questionary.json');
+        var folder_path = __dirname;
+        var file_path = '../predefined/questionary.json';
+        // if (process.env.OPENSHIFT_REPO_DIR) {
+        //     folder_path = process.env.OPENSHIFT_REPO_DIR;
+        //     file_path   =  '../predefined/questionary.json';
+        // }
+
+        var file = path.join(folder_path, file_path);
         personalGrowthQuestionary  = JSON.parse(fs.readFileSync(file, 'utf8'));
     }
     console.log("Connection with DB established !");
