@@ -6,7 +6,7 @@
 /* Services */
 
 angular.module('projectZServices', ['ngResource'])
- 
+
 .factory('Questionary', ['$resource',
     function($resource) {
         return $resource('/api/pgq/:pgq_id', {id: '@id'}, {
