@@ -5,7 +5,9 @@
 // set up ========================
 var express  = require('express');               // create our app w/ express
 var app      = express();
-var PORT = process.env.PORT || 8080;
+//var http     = require('http');
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var server_port       = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 var path           = require('path');
 var morgan         = require('morgan');          // log requests to the console (express4)
@@ -21,6 +23,7 @@ app.use(methodOverride());
 
 require('./app/routes')(app);
 
-app.listen(PORT);
-
-console.log("Node server listening on port " + PORT);
+//var server = http.createServer(app);
+app.listen(server_port, server_ip_address, function () {
+    console.log( "Listening on " + server_ip_address + ", server_port " + server_port)
+});
