@@ -24,12 +24,13 @@ html, body {
 }
 
 #content {
-    min-height: 89.6%;
+    min-height: 100%;
     height: auto !important;
-    margin: 0 auto 3px;
-    -webkit-box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);
+    margin: 0 auto -4em;
+    padding-bottom: 4em;
+    /*-webkit-box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);
     -moz-box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);
-    box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);
+    box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);*/
 }
 
 footer {
