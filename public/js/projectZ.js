@@ -53,7 +53,10 @@ angular.module('ProjectZ', [
       if (item.isEditing) {
           item.beforeEdit = item.answer;
       } else {
-          Questionary.update(questionary);
+          if (item.beforeEdit.localeCompare(item.answer) != 0)
+          {
+              Questionary.update(questionary);
+          }
       }
   };
 })
