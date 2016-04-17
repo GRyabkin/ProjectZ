@@ -48,6 +48,17 @@ module.exports = function(app) {
         });
     });
 
+    app.put('/api/pgq/:pgq_id', function(req, res) {
+    
+        Questionary.findByIdAndUpdate(req.params.pgq_id, {$set: req.body}, function(err, questionary) {
+            if (err)
+                res.send(err);
+            else
+                res.json({ message: 'Questionary updated!', questionary: questionary });
+
+        });
+    });
+
     app.post('/api/pgq', function (req, res) {
 
         console.log("Request data " + req.body);
@@ -64,7 +75,7 @@ module.exports = function(app) {
         });
     });
 
-    app.delete('/api/pgq/:pgq_id', function (req, res) {
+    app.delete('/api/pgq', function (req, res) {
         Questionary.remove({
             _id: req.params.pgq_id
         }, function (err) {

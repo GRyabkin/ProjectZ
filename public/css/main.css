@@ -28,9 +28,6 @@ html, body {
     height: auto !important;
     margin: 0 auto -4em;
     padding-bottom: 4em;
-    /*-webkit-box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);
-    -moz-box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);
-    box-shadow: 0 2px 8px 1px rgba(0,0,0,0.70);*/
 }
 
 footer {
@@ -40,4 +37,48 @@ footer {
     padding: 20px 20px 0 0;
     bottom: 0;
     height: 4em;
+}
+
+.list-group-item-text {
+    margin-bottom: 5px;
+}
+
+.answer-text {
+    padding: 6px 4px 4px 6px;
+}
+
+.answer-text:hover {
+    position: relative;
+    -webkit-box-shadow: 0px 0px 19px 0px rgba(223,226,219,1);
+    -moz-box-shadow: 0px 0px 19px 0px rgba(223,226,219,1);
+    box-shadow: 0px 0px 19px 0px rgba(223,226,219,1);
+}
+
+.answer-text:hover span.edit-text {
+    display: block;
+}
+
+span.edit-text {
+    margin: 8px;
+    color: darkorange;
+    position: absolute;
+    top: 0; right: 0;
+    text-align:right;
+    display:none;
+}
+
+/* Animations */
+
+.animate-show {
+    opacity: 1;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+    -webkit-transition:all linear 0.2s;
+    transition:all linear 0.2s;
+}
+
+.animate-show.ng-hide {
+    line-height: 0;
+    opacity: 0;
 }

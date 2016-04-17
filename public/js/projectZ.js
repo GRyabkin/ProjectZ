@@ -22,6 +22,9 @@ angular.module('ProjectZ', [
   $scope.questionariesList  = Questionary.getSubmitted();
   $scope.questionary        = Questionary.query();
 
+  $scope.isEditing = false;
+
+  // Start fill new questionary
   $scope.open = function (size) {
 
     $scope.questionary = Questionary.query();
@@ -35,7 +38,7 @@ angular.module('ProjectZ', [
     });
 
     modalInstance.saveData = function () {
-    
+
       var postPayload = $scope.questionary;
       postPayload.fillDate = new Date();
 
@@ -43,6 +46,43 @@ angular.module('ProjectZ', [
       $scope.questionary = {};
     };
   };
+
+  // Editing questionary list item
+  $scope.editItem = function (started, item, questionary) {
+      item.isEditing = started;
+      if (item.isEditing) {
+          item.beforeEdit = item.answer;
+      } else {
+          Questionary.update(questionary);
+      }
+  };
+})
+    // Focus answer input
+.directive('focusOnShow', function($timeout) {
+    return {
+        restrict: 'A',
+        link: function($scope, $element, $attr) {
+            if ($attr.ngShow){
+                $scope.$watch($attr.ngShow, function(newValue){
+                    if(newValue){
+                        $timeout(function(){
+                            $element[0].focus();
+                        }, 0);
+                    }
+                })
+            }
+            if ($attr.ngHide){
+                $scope.$watch($attr.ngHide, function(newValue){
+                    if(!newValue){
+                        $timeout(function(){
+                            $element[0].focus();
+                        }, 0);
+                    }
+                })
+            }
+
+        }
+    };
 })
 
 .controller('modalFormCtrl', function ($scope, $log, $uibModalInstance) {
