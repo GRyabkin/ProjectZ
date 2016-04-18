@@ -50,17 +50,14 @@ module.exports = function(app) {
 
     app.put('/api/pgq/:pgq_id', function(req, res) {
 
-        // Questionary.findById()
+        Questionary.findOneAndUpdate({ _id:req.params.pgq_id }, { $set: req.body}, function(err, questionary) {
 
-        Questionary.update({ _id: req.params.pgq_id }, {$set: req.body}, function(err, questionary) {
-            
-            console.log(err, questionary);
-            if (err)
-                res.send(err);
-            else
-                res.json({ message: 'Questionary updated!', questionary: questionary });
-
-        })
+                if (err)
+                    res.send(err);
+                else
+                    res.json({ message: 'Questionary updated!', questionary: questionary });
+            }
+        );
     });
 
     app.post('/api/pgq', function (req, res) {
