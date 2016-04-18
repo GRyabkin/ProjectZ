@@ -50,6 +50,7 @@ module.exports = function(app) {
 
     app.put('/api/pgq/:pgq_id', function(req, res) {
 
+        delete req.body._id;
         Questionary.findOneAndUpdate({ _id:req.params.pgq_id }, { $set: req.body}, function(err, questionary) {
 
                 if (err)
@@ -62,7 +63,6 @@ module.exports = function(app) {
 
     app.post('/api/pgq', function (req, res) {
 
-        console.log("Request data " + req.body);
         Questionary.update(req.body, {$set: req.body}, {upsert: true}, function (err, doc) {
             if (err)
                 res.send(err);
